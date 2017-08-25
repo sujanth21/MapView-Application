@@ -13,10 +13,16 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    let latitude = -37.811741
+    let longitude = 144.966716
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
+        
+        mapView.setRegion(region, animated: true)
     }
 
     
@@ -33,6 +39,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func locateMeBtnPressed(_ sender: Any) {
+        
     }
     
     @IBAction func directionBtnPressed(_ sender: Any) {
