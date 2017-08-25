@@ -23,6 +23,15 @@ class ViewController: UIViewController {
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
         
         mapView.setRegion(region, animated: true)
+        
+        let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let pinObject = MKPointAnnotation()
+        pinObject.coordinate = pinLocation
+        pinObject.title = "Flinders Street Station"
+        pinObject.subtitle = "Flinders Street railway station is a railway station on the corner of Flinders and Swanston Streets in Melbourne, Australia. "
+        
+        self.mapView.addAnnotation(pinObject)
+        
     }
 
     
