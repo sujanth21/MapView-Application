@@ -1,14 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MapViewApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +19,72 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idG-Uv-u9H">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Standard" id="ryE-7A-XTQ">
+                                        <connections>
+                                            <action selector="standardBtnPressed:" destination="BYZ-38-t0r" id="CAS-Za-xxe"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Hak-Pk-TUV"/>
+                                    <barButtonItem title="Satallite" id="Xuj-jl-aky">
+                                        <connections>
+                                            <action selector="satalliteBtnPressed:" destination="BYZ-38-t0r" id="bnW-zI-sGB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ACw-RV-rI0"/>
+                                    <barButtonItem title="Hybrid" id="9s1-lQ-x97">
+                                        <connections>
+                                            <action selector="hybridBtnPressed:" destination="BYZ-38-t0r" id="d30-9M-eAe"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eK2-2S-DbF"/>
+                                    <barButtonItem title="Locate Me" id="0bs-Ng-3nA">
+                                        <connections>
+                                            <action selector="locateMeBtnPressed:" destination="BYZ-38-t0r" id="hWe-o7-r5F"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYn-PY-LaY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Map View" id="wFw-nW-mtH">
+                                        <barButtonItem key="rightBarButtonItem" title="Direction" id="I38-v4-Qif">
+                                            <connections>
+                                                <action selector="directionBtnPressed:" destination="BYZ-38-t0r" id="9eR-d3-baH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xae-cF-S1A">
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WYn-PY-LaY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Iij-0e-hKO"/>
+                            <constraint firstItem="idG-Uv-u9H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kge-Ak-aRh"/>
+                            <constraint firstAttribute="trailing" secondItem="WYn-PY-LaY" secondAttribute="trailing" id="NGW-l2-LQW"/>
+                            <constraint firstAttribute="trailing" secondItem="xae-cF-S1A" secondAttribute="trailing" id="PP8-iN-07Q"/>
+                            <constraint firstItem="xae-cF-S1A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cZR-pt-D1X"/>
+                            <constraint firstAttribute="trailing" secondItem="idG-Uv-u9H" secondAttribute="trailing" id="d8d-37-Ve2"/>
+                            <constraint firstItem="xae-cF-S1A" firstAttribute="top" secondItem="WYn-PY-LaY" secondAttribute="bottom" id="hMg-L0-S6k"/>
+                            <constraint firstAttribute="bottom" secondItem="idG-Uv-u9H" secondAttribute="bottom" id="nOo-S6-HtB"/>
+                            <constraint firstItem="idG-Uv-u9H" firstAttribute="top" secondItem="xae-cF-S1A" secondAttribute="bottom" id="rny-u7-gkG"/>
+                            <constraint firstItem="WYn-PY-LaY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ylv-gV-c78"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="xae-cF-S1A" id="Laj-5N-L2g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-79.200000000000003" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>
