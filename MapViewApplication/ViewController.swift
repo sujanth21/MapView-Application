@@ -60,6 +60,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func directionBtnPressed(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://maps.apple.com/maps?daddr=\(latitude),\(longitude)")!, options: [:], completionHandler: nil)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
