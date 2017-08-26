@@ -9,12 +9,14 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
     let latitude = -37.811741
     let longitude = 144.966716
+    
+    var manager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +51,28 @@ class ViewController: UIViewController {
     
     @IBAction func locateMeBtnPressed(_ sender: Any) {
         
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
+        mapView.showsUserLocation = true
     }
     
     @IBAction func directionBtnPressed(_ sender: Any) {
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation: CLLocation = locations[0] as CLLocation
+        manager.stopUpdatingLocation()
+        
+        let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        
+        mapView.setRegion(region, animated: true)
     }
 }
 
